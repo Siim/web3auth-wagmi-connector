@@ -38,6 +38,11 @@ const config = generateWebpackConfig({
   currentPath,
   pkg,
   alias: {},
+  module: {
+    rules: [
+      { test: /\.ts$/, use: 'ts-loader' }
+    ]
+  }
 });
 
 module.exports = config;

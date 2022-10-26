@@ -72,11 +72,19 @@ export class Web3AuthConnector extends Connector {
       },
     });
 
+    log.info('Social login config', { ...config.options.socialLoginConfig })
+
     this.socialLoginAdapter = new OpenloginAdapter({
       adapterSettings: {
         ...config.options,
       },
-      chainConfig: finalChainConfig,
+      loginSettings: {
+        ...config.options.socialLoginConfig
+      },
+      chainConfig: finalChainConfig
+    });
+
+    this.socialLoginAdapter = new OpenloginAdapter({
     });
 
     this.web3AuthInstance.configureAdapter(this.socialLoginAdapter);
